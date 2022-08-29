@@ -66,7 +66,7 @@
         <link rel="stylesheet" href="assets/fonts/jf-flat-font.css"/>
         <link rel="stylesheet" href="assets/css/style.css"/>
 
-        <title>JSP - Hello World</title>
+        <title>CF-Tool - problemset creator</title>
     </head>
     <body>
         <h1>Codeforces Problem list Creator</h1>
