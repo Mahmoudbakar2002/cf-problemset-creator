@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -jar target/dependency/webapp-runner.jar --port $PORT target/*.war
+web:    web: java -jar target/Codeforces-tool-1.0-SNAPSHOT.jar
