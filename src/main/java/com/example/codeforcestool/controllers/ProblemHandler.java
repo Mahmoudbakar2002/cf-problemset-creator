@@ -12,7 +12,7 @@ import java.util.List;
 public class ProblemHandler {
 
 
-    public static ArrayList<ProblemContainer> getAllProblem(User user, List<User> other,List<String> tags,int from,int to){
+    public static ArrayList<ProblemContainer> getAllProblem(User user, List<User> other,String [] tags,int from,int to){
         ArrayList<ProblemContainer> ret=new ArrayList<>();
         HashMap<Problem,Integer> viewed=new HashMap<>();
         other.forEach(e->{
@@ -20,6 +20,12 @@ public class ProblemHandler {
                 subs.forEach((sub)->{
                     if(!viewed.containsKey(sub.getProblem())){
                         if(sub.getProblem().getRating()<from||sub.getProblem().getRating()>to)return;
+                        if(tags.length>0) {
+                            boolean hap=false;
+                            for(String t:tags)
+                                hap|=sub.getProblem().hasTopic(t.trim());
+                            if(!hap) return;
+                        }
                         viewed.put(sub.getProblem(),ret.size());
                         ret.add(new ProblemContainer(sub.getProblem()));
                     }

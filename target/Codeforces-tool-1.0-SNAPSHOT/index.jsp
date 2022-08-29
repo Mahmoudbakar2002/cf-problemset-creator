@@ -42,9 +42,12 @@
 ////                    "Abdelshakour",
 ////                    "3bdo_Farah",
 //            };
-            ArrayList<String> tags = new ArrayList<>();
+            String tags[] = new String[0] ;
             if(!request.getParameter("others").trim().isEmpty()){
                 users = request.getParameter("others").trim().split(",");
+            }
+            if(!request.getParameter("topics").trim().isEmpty()){
+                tags = request.getParameter("topics").trim().split(",");
             }
 
             ArrayList<User> usersList = UserHandler.getUsers(users);
@@ -66,7 +69,7 @@
         <link rel="stylesheet" href="assets/fonts/jf-flat-font.css"/>
         <link rel="stylesheet" href="assets/css/style.css"/>
 
-        <title>JSP - Hello World</title>
+        <title>CF-Tool - problemset creator</title>
     </head>
     <body>
         <h1>Codeforces Problem list Creator</h1>
@@ -92,17 +95,21 @@
                         <br>
                         <div class="d-inline-block">
                             from:
-                            <input type="number" class="form-control text-center d-inline" style="width: 100px!important;" name="from" placeholder="1200" value="<%=user!=null?request.getParameter("from").trim():"" %>">
+                            <input type="number" class="form-control text-center d-inline" style="width: 100px!important;" name="from" placeholder="0" value="<%=user!=null?request.getParameter("from").trim():"" %>">
                         </div>
                         <div class="d-inline-block">
                             to:
-                            <input type="number" class="form-control text-center d-inline" style="width: 100px!important;" name="to" placeholder="1800" value="<%=user!=null?request.getParameter("to").trim():"" %>">
+                            <input type="number" class="form-control text-center d-inline" style="width: 100px!important;" name="to" placeholder="3000" value="<%=user!=null?request.getParameter("to").trim():"" %>">
                         </div>
                     </div>
                     <input type="submit" class=" text-center btn btn-cf"  value="check">
                     <div class="w-100 mt-3">
-                        other users:
-                        <input type="text" class="form-control text-center d-inline" style="width: 500px!important;" name="others" placeholder="sperate users with (,)" value="<%=user!=null?request.getParameter("others").trim():"" %>">
+                        <b>other users:</b><br>
+                        <input type="text" class="form-control text-center d-inline" style="width: 800px!important;" name="others" placeholder="sperate users with (,)" value="<%=user!=null?request.getParameter("others").trim():"" %>">
+                        <br>
+                        <b> Tags(or):</b><br>
+
+                        <input type="text" class="form-control text-center d-inline" style="width: 800px!important;" name="topics" placeholder="sperate Tags with (,) and type it like codeforces" value="<%=user!=null?request.getParameter("topics").trim():"" %>">
 
                     </div>
                 </form>

@@ -14,6 +14,15 @@ public class Problem {
     private int rating;
     private String[] tags;
 
+
+    public boolean hasTopic(String topic){
+        for (String e:
+             tags) {
+            if(e.equalsIgnoreCase(topic))return true;
+        }
+        return false;
+    }
+
     public int getContestId() {
         return contestId;
     }
