@@ -16,32 +16,6 @@
         user= UserHandler.getUser(handle);
         if(user!=null) {
             String users[]=new String[0] ;
-//            {
-////                    "tourist",
-////                    "jiangly",
-////                    "Um_nik",
-////                    "slime",
-////                    "djq_cpp",
-////                    "maroonrk",
-////                    "MiracleFaFa",
-////                    "Radewoosh",
-////                    "Petr",
-//                    "Yousef_Salama",
-//                    "abdelkarim",
-//                    "abdou_93",
-//                    "AhmedMorgan",
-//                    "-Green",
-//                   "mahmoudbadawy",
-//                    "mohammedehab2002",
-//                    "AbdullahAlabd",
-////                    "DeadlyPillow",
-//                    "Uzumaki_Narutoo",
-//                    "OBITO",
-//                    "Yossef",
-////                    "Amr_elmowaled",
-////                    "Abdelshakour",
-////                    "3bdo_Farah",
-//            };
             String tags[] = new String[0] ;
             if(!request.getParameter("others").trim().isEmpty()){
                 users = request.getParameter("others").trim().split(",");

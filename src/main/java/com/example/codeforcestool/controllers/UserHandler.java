@@ -33,7 +33,7 @@ public class UserHandler {
     }
     public static ArrayList<User> getUsers(String[] handles)throws Exception {
         String handlesStr = "";
-        for (String e:handles) handlesStr+=e+";";
+        for (String e:handles) handlesStr+=e.trim()+";";
 
         CodeForcesRequest cfRequest = CodeForcesRequest.getBuilder(CodeForcesRequest.Method.USER_INFO).
                 addParameter("handles", handlesStr).build();

@@ -2,8 +2,10 @@ package com.example.codeforcestool;
 
 
 import com.example.codeforcestool.api.CodeForcesRequest;
+import com.example.codeforcestool.controllers.ContestHandler;
 import com.example.codeforcestool.controllers.SubmissionHandler;
 import com.example.codeforcestool.controllers.UserHandler;
+import com.example.codeforcestool.models.Contest;
 import com.example.codeforcestool.models.Problem;
 import com.example.codeforcestool.models.Submission;
 import com.example.codeforcestool.api.CodeForcesResponse;
@@ -17,6 +19,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.List;
 
 public class main_test {
 
@@ -137,46 +140,71 @@ public class main_test {
 
 
 
-        User user;
-        ArrayList<Submission> subs=new ArrayList<Submission>();
-        user= UserHandler.getUser(handle);
-        System.out.println(user.getHandle());
+//        User user;
+//        ArrayList<Submission> subs=new ArrayList<Submission>();
+//        user= UserHandler.getUser(handle);
+//        System.out.println(user.getHandle());
+//
+//        if(user!=null)
+//            subs= SubmissionHandler.getSubmission(user);
+//
+//        subs.forEach((e)->{
+//            System.out.println(e.getProblem().getName());
+//        });
+//
+//        if(user !=null){
+//            for (int i=0;i<subs.size();i++){
+//                Problem problem=subs.get(i).getProblem();
+//
+//                String probUrl="https://codeforces.com/problemset/problem/"+problem.getContestId()+"/"+problem.getIndex();
+//                String tags="";
+//                for(String e: problem.getTags())tags+=e+" , ";
+//
+//                String colorRow=subs.get(i).getVerdict()== null?"":
+//                        subs.get(i).getVerdict()== Submission.Verdict.OK?"table-success"
+//                                :"table-danger";
+//
+//                String html= "<tr class=\""+colorRow+"\">\n" +
+//                        "   <td>"+i+"</td>\n" +
+//                        "   <td>"+problem.getName()+"</td>\n" +
+//                        "   <td>"+problem.getRating()+"</td>\n" +
+//                        "   <td>"+tags+"</td>\n" +
+//                        "   <td><a href=\""+probUrl+"\"> problem link</a></td>\n" +
+//                        "</tr>\n"
+//                        ;
+//                System.out.println(html);
+//            }
+//
+//        }
 
-        if(user!=null)
-            subs= SubmissionHandler.getSubmission(user);
 
-        subs.forEach((e)->{
-            System.out.println(e.getProblem().getName());
+
+
+
+
+
+
+
+
+        User user=null;
+        ArrayList<Contest> data = new ArrayList<>();
+        String othersHandleStr="Hassan_Fouad,mahmoudatef.coder";
+        user= UserHandler.getUser("abdallah_55");
+        List<User> others=UserHandler.getUsers(othersHandleStr.trim().split(","));
+        data= ContestHandler.getNotJoined(user,others);
+
+        data.forEach((e)->{
+            System.out.println(e.getId()+","+e.getName());
         });
 
-        if(user !=null){
-            for (int i=0;i<subs.size();i++){
-                Problem problem=subs.get(i).getProblem();
 
-                String probUrl="https://codeforces.com/problemset/problem/"+problem.getContestId()+"/"+problem.getIndex();
-                String tags="";
-                for(String e: problem.getTags())tags+=e+" , ";
 
-                String colorRow=subs.get(i).getVerdict()== null?"":
-                        subs.get(i).getVerdict()== Submission.Verdict.OK?"table-success"
-                                :"table-danger";
 
-                String html= "<tr class=\""+colorRow+"\">\n" +
-                        "   <td>"+i+"</td>\n" +
-                        "   <td>"+problem.getName()+"</td>\n" +
-                        "   <td>"+problem.getRating()+"</td>\n" +
-                        "   <td>"+tags+"</td>\n" +
-                        "   <td><a href=\""+probUrl+"\"> problem link</a></td>\n" +
-                        "</tr>\n"
-                        ;
-                System.out.println(html);
-            }
+
+
+
+
 
         }
-
-
-
-
-    }
 }
 

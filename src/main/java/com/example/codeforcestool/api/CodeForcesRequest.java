@@ -19,7 +19,9 @@ public class CodeForcesRequest {
     public static enum Method{
 //        NOT_SET_YET("error"),
         USER_STATUS("user.status"),
-        USER_INFO("user.info");
+        USER_INFO("user.info"),
+        CONTEST_LIST("contest.list"),
+        CONTEST_STANDING("contest.standings");
 
         private String name;
         Method(String name){this.name=name;}
